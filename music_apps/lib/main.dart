@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:audioplayers/audio_cache.dart';
 void main() {
   runApp(MyApp());
 }
@@ -10,6 +10,23 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+
+  void playSounds(int number){
+    final player=AudioCache();
+    player.play('note$number.wav');
+  }
+
+  Expanded draw(int number,Color color){
+   return Expanded(
+      child: FlatButton(
+          color: color,
+          onPressed: (){
+            playSounds(number);
+          }
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -20,62 +37,13 @@ class _MyAppState extends State<MyApp> {
           body: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Expanded(
-                child: FlatButton(
-                  color: Colors.red,
-                  onPressed: () {
-                    print('Click');
-                  },
-                ),
-              ),
-              Expanded(
-                child: FlatButton(
-                  color: Colors.brown,
-                  onPressed: () {
-                    print('Click');
-                  },
-                ),
-              ),
-              Expanded(
-                child: FlatButton(
-                  color: Colors.pink,
-                  onPressed: () {
-                    print('Click');
-                  },
-                ),
-              ),
-              Expanded(
-                child: FlatButton(
-                  color: Colors.orange,
-                  onPressed: () {
-                    print('Click');
-                  },
-                ),
-              ),
-              Expanded(
-                child: FlatButton(
-                  color: Colors.yellow,
-                  onPressed: () {
-                    print('Click');
-                  },
-                ),
-              ),
-              Expanded(
-                child: FlatButton(
-                  color: Colors.blue,
-                  onPressed: () {
-                    print('Click');
-                  },
-                ),
-              ),
-              Expanded(
-                child: FlatButton(
-                  color: Colors.brown,
-                  onPressed: () {
-                    print('Click');
-                  },
-                ),
-              ),
+              draw(1, Colors.red),
+              draw(2, Colors.brown),
+              draw(3, Colors.pink),
+              draw(4, Colors.orange),
+              draw(5, Colors.yellow),
+              draw(6, Colors.blue),
+              draw(7, Colors.purple),
             ],
           ),
         ),
