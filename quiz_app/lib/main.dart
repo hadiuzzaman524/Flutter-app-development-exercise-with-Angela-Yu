@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:quiz_app/questionbrain.dart';
 
 
@@ -24,6 +25,11 @@ void checkAnswer(bool myans){
   } else {
   questionBrain.wrongAnswer();
   }
+
+setState(() {
+  Alert(context: context, title: "RFLUTTER", desc: "Flutter is awesome.")
+      .show();
+});
 
 }
 
@@ -85,6 +91,7 @@ void checkAnswer(bool myans){
                           setState(() {
                             checkAnswer(true);
                             questionBrain.nextQuestion();
+
                           });
                         },
                         child: Text(
@@ -109,10 +116,11 @@ void checkAnswer(bool myans){
                           print('false click');
                           setState(() {
 
-
                             checkAnswer(false);
                             questionBrain.nextQuestion();
+
                           });
+
                         },
                         child: Text(
                           'False',

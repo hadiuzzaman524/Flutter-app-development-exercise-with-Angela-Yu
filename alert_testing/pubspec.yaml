@@ -1,4 +1,4 @@
-name: quiz_app
+name: alert_testing
 description: A new Flutter application.
 
 # The following line prevents the package from being accidentally published to
@@ -29,7 +29,6 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.3
   rflutter_alert: ^1.1.0
-
 
 dev_dependencies:
   flutter_test:

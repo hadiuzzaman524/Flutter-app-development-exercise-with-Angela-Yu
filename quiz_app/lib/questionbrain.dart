@@ -1,6 +1,8 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'question.dart';
+
 
 class QuestionBrain{
 
@@ -34,6 +36,7 @@ class QuestionBrain{
         true),
   ];
 
+
   void nextQuestion(){
     if(_number<_questions.length-1)
     _number++;
@@ -51,11 +54,13 @@ class QuestionBrain{
     if(_number<_questions.length-1)
     _result.add(
         Icon(Icons.beenhere, color: Colors.green));
+
   }
   void wrongAnswer(){
     if(_number<_questions.length-1)
     _result.add(
         Icon(Icons.backspace, color: Colors.red));
+
   }
 
   List<Widget> getResult()
