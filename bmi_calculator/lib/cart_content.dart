@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'all_designstyle.dart';
+
+
 class ReusableContent extends StatelessWidget {
 
   final String name;
@@ -20,11 +23,7 @@ class ReusableContent extends StatelessWidget {
           height: 5.0,
         ),
         Text(name,
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-          ),
+          style:textStyle,
         ),
       ],
     );

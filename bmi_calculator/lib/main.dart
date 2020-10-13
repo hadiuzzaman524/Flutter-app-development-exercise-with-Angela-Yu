@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import 'all_designstyle.dart';
 import 'cart_content.dart';
 import 'cart_item.dart';
 
-const Color mycolor = Color(0xFF1D1F33);
-const Color inactive=Colors.black87;
-const Color activecolor=Color(0xFF1D1F33);
-const Color mybackground = Color(0xFF0A0D22);
 
 void main() {
   runApp(MyApp());
@@ -18,23 +15,14 @@ class MyApp extends StatefulWidget {
   _MyAppState createState() => _MyAppState();
 }
 
+enum Gender {
+  male,
+  female,
+}
+
 class _MyAppState extends State<MyApp> {
+  Gender selectedGender;
 
-
-  Color inactivem=inactive;
-  Color inactivef=inactive;
-
-  void selectColor(bool flag){
-
-    if(flag){
-      inactivem=activecolor;
-      inactivef=inactive;
-    }
-    if(!flag){
-      inactivef=activecolor;
-      inactivem=inactive;
-    }
-  }
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -63,32 +51,34 @@ class _MyAppState extends State<MyApp> {
                         FlatButton have default margin,padding and it's change our
                         design, but GestureDetector can not change our main design.
                          */
-                        child: GestureDetector(
-                          onTap: (){
-                            print('male');
+                        child: BodyDesign(
+                          onPress: () {
                             setState(() {
-                              selectColor(true);
+                              selectedGender = Gender.male;
                             });
                           },
-                          child: BodyDesign(
-                            mycolorp: inactivem,
-                            newchild: ReusableContent(name: 'MALE',
-                            myicon: FontAwesomeIcons.mars,),
+                          mycolorp: selectedGender == Gender.male
+                              ? activecolor
+                              : inactivecolor,
+                          newchild: ReusableContent(
+                            name: 'MALE',
+                            myicon: FontAwesomeIcons.mars,
                           ),
                         ),
                       ),
                       Expanded(
-                        child: GestureDetector(
-                          onTap: (){
-                            print('female');
+                        child: BodyDesign(
+                          onPress: () {
                             setState(() {
-                              selectColor(false);
+                              selectedGender = Gender.female;
                             });
                           },
-                          child: BodyDesign(
-                            mycolorp: inactivef,
-                            newchild: ReusableContent(name: 'FEMALE',
-                            myicon: FontAwesomeIcons.venus,),
+                          mycolorp: selectedGender == Gender.female
+                              ? activecolor
+                              : inactivecolor,
+                          newchild: ReusableContent(
+                            name: 'FEMALE',
+                            myicon: FontAwesomeIcons.venus,
                           ),
                         ),
                       ),
@@ -100,7 +90,13 @@ class _MyAppState extends State<MyApp> {
             Expanded(
               flex: 2,
               child: BodyDesign(
-                mycolorp: mycolor,
+                newchild: Column(
+                  children: [
+                    Text('HELLO',
+                    style: textStyle,),
+                  ],
+                ),
+                mycolorp: activecolor,
               ),
             ),
             Expanded(
@@ -110,12 +106,12 @@ class _MyAppState extends State<MyApp> {
                   children: [
                     Expanded(
                       child: BodyDesign(
-                        mycolorp: mycolor,
+                        mycolorp: activecolor,
                       ),
                     ),
                     Expanded(
                       child: BodyDesign(
-                        mycolorp: mycolor,
+                        mycolorp: activecolor,
                       ),
                     ),
                   ],
@@ -134,4 +130,3 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
-
