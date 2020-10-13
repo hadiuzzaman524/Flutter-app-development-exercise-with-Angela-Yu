@@ -23,7 +23,7 @@ class ReusableContent extends StatelessWidget {
           height: 5.0,
         ),
         Text(name,
-          style:textStyle,
+          style:kTextStyle,
         ),
       ],
     );
