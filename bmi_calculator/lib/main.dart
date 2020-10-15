@@ -19,12 +19,12 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
         scaffoldBackgroundColor: kMyBackgroundColor,
         appBarTheme: AppBarTheme(
-        color: kMyBackgroundColor,
+        color: kActiveColor,
     )),
       initialRoute: '/',
       routes: {
           '/':(context)=>HomePage(),
-          '/first':(context)=>Result(),
+
       },
     );
   }

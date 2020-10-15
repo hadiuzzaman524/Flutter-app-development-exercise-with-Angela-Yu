@@ -5,6 +5,7 @@ import 'all_designstyle.dart';
 import 'cart_content.dart';
 import 'cart_item.dart';
 import 'resultpage.dart';
+import 'bottombutton.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -19,9 +20,10 @@ enum Gender {
 class _HomePageState extends State<HomePage> {
   Gender selectedGender;
 
-  int height = 80;
-  int weight = 30;
-  int age = 15;
+  int height = 90;
+  int weight = 40;
+  int age = 16;
+  String feet='3.0';
 
   @override
   Widget build(BuildContext context) {
@@ -103,7 +105,19 @@ class _HomePageState extends State<HomePage> {
                       Text(
                         'cm',
                         style: kTextStyle,
-                      )
+                      ),
+
+                      SizedBox(
+                        width: 15.0,
+                      ),
+                      Text(
+                        feet,
+                        style: kNumberStyle,
+                      ),
+                      Text(
+                        'feet',
+                        style: kTextStyle,
+                      ),
                     ],
                   ),
                   SliderTheme(
@@ -119,16 +133,18 @@ class _HomePageState extends State<HomePage> {
                     ),
                     child: Slider(
                       value: height.toDouble(),
-                      min: 60,
-                      max: 120,
+                      min: 90,
+                      max: 220,
                       activeColor: Colors.pink,
                       inactiveColor: Colors.blueGrey,
                       onChanged: (double newvalue) {
                         setState(() {
                           height = newvalue.round();
+                          feet=(newvalue/30.48).toStringAsFixed(1);
                         });
 
-                        print(newvalue);
+                        print((newvalue/30.48).toStringAsFixed(1));
+
                       },
                     ),
                   )
@@ -252,21 +268,14 @@ class _HomePageState extends State<HomePage> {
           ),
           Expanded(
             flex: 1,
-            child: FlatButton(
-              onPressed: () {
-                print('hello');
-                Navigator.pushNamed(context, '/first');
+            child: BottomButton(
+              onPress:  () {
+               Navigator.push(context, MaterialPageRoute(builder: (context){
+                 return Result(height: height, weight: weight,);
+               }));
               },
-              child: Container(
-                color: Color(0xFFEB1555),
-                margin: EdgeInsets.only(top: 10.0),
-                child: Center(
-                  child: Text(
-                    'CALCULATE YOUR BMI',
-                    style: kTextStyle,
-                  ),
-                ),
-              ),
+              text: 'CALCULATE YOUR BMI',
+
             ),
           ),
         ],

@@ -19,3 +19,25 @@ const kNumberStyle= TextStyle(
   fontWeight: FontWeight.w900,
   fontSize: 50,
 );
+const kNumberStyleBmi=TextStyle(
+  color: Colors.white,
+  fontWeight: FontWeight.w900,
+  fontSize: 70,
+);
+
+const kTitleStyle=TextStyle(
+  color: Colors.white,
+  fontWeight: FontWeight.w900,
+  fontSize: 30,
+);
+const kBmiText=TextStyle(
+  color: Colors.green,
+  fontSize: 26,
+  fontWeight: FontWeight.bold,
+
+);
+const kButtonText=TextStyle(
+  color: Colors.white,
+  fontWeight: FontWeight.bold,
+  fontSize: 20,
+);
