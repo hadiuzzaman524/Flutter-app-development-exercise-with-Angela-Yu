@@ -1,4 +1,4 @@
-package com.example.judashop;
+package com.example.juda;
 
 import io.flutter.embedding.android.FlutterActivity;
 

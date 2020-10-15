@@ -1,4 +1,4 @@
-package com.example.alert_testing;
+package com.new.jaman;
 
 import io.flutter.embedding.android.FlutterActivity;
 
