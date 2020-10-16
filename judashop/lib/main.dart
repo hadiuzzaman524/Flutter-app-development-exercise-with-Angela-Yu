@@ -38,38 +38,41 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Container(
         color: Colors.white,
         child: Column(
+
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Expanded(
-              flex: 3,
-              child: Column(
-                children: [
-                  Container(
-                    margin: EdgeInsets.only(top: 90,right: 90,left: 90),
-                    child: Image.asset('images/applogo.png'),
-                  ),
-                 SizedBox(
-                   height: 6,
-                 ),
-                 Text('Your Biggest Shopping Mall',
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: Color(0xFF707070),
-                      fontWeight: FontWeight.normal,
-                    ),),
-                ],
+            Container(
+              color: Colors.white,
+              margin: EdgeInsets.only(right: 90, left: 90),
+              child: Image.asset('images/applogo.png'),
+             // child: Text('hello'),
+            ),
+            SizedBox(
+              height: 6,
+            ),
+            Text(
+              'Your Biggest Shopping Mall',
+              style: TextStyle(
+                fontSize: 20,
+                color: Color(0xFF707070),
+                fontWeight: FontWeight.normal,
               ),
             ),
-
-            Expanded(
-              flex: 1,
-              child: Container(
-                child: Text('Powered By juda.shop',
+            SizedBox(
+              height: 40,
+            ),
+            Container(
+              child: Text(
+                'Powered By juda.shop',
                 style: TextStyle(
                   fontSize: 19,
                   fontWeight: FontWeight.bold,
                   color: Color(0xFF707070),
-                ),),
+                ),
               ),
+            ),
+            SizedBox(
+              height: 40,
             ),
           ],
         ),

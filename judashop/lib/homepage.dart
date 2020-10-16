@@ -36,15 +36,52 @@ class _WebApplicationState extends State<WebApplication> {
   final Completer<WebViewController> _controller =
   Completer<WebViewController>();
 
+  var alertStyle = AlertStyle(
+    animationType: AnimationType.fromTop,
+    isCloseButton: false,
+    isOverlayTapDismiss: false,
+    descStyle: TextStyle(fontWeight: FontWeight.bold),
+    descTextAlign: TextAlign.start,
+    animationDuration: Duration(milliseconds: 400),
+    alertBorder: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(0.0),
+      side: BorderSide(
+        color: Colors.grey,
+      ),
+    ),
+    titleStyle: TextStyle(
+      color: Colors.red,
+    ),
+    alertAlignment: Alignment.topCenter,
+  );
+
+showAlert(){
+  Alert(
+    context: context,
+    style: alertStyle,
+    type: AlertType.info,
+    title: "NO INTERNET",
+    desc: "MAKE SURE YOU HAVE AN INTERNET CONNECTION.",
+    buttons: [
+      DialogButton(
+        child: Text(
+          "CANCEL",
+          style: TextStyle(color: Colors.white, fontSize: 20),
+        ),
+        onPressed: () => Navigator.of(context, rootNavigator: true).pop(),
+        color: Color.fromRGBO(0, 179, 134, 1.0),
+        radius: BorderRadius.circular(0.0),
+      ),
+    ],
+  ).show();
+}
+
   _checkInternetConnetion() async {
+
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.mobile) {} else
     if (connectivityResult == ConnectivityResult.wifi) {} else {
-      Alert(
-          context: context,
-          title: "NO INTERNET",
-          desc: "MAKE SURE YOU HAVE AN INTERNET CONNECTION")
-          .show();
+      showAlert();
     }
   }
 
