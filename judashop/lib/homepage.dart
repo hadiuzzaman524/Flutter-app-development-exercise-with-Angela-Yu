@@ -40,8 +40,8 @@ class _WebApplicationState extends State<WebApplication> {
     animationType: AnimationType.fromTop,
     isCloseButton: false,
     isOverlayTapDismiss: false,
-    descStyle: TextStyle(fontWeight: FontWeight.bold),
-    descTextAlign: TextAlign.start,
+    descStyle: TextStyle(fontWeight: FontWeight.normal,fontSize: 20),
+    descTextAlign: TextAlign.center,
     animationDuration: Duration(milliseconds: 400),
     alertBorder: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(0.0),
@@ -77,11 +77,11 @@ showAlert(){
 }
 
   _checkInternetConnetion() async {
-
+    showAlert();
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.mobile) {} else
     if (connectivityResult == ConnectivityResult.wifi) {} else {
-      showAlert();
+
     }
   }
 
