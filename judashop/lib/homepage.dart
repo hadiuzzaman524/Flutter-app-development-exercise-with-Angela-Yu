@@ -77,11 +77,11 @@ showAlert(){
 }
 
   _checkInternetConnetion() async {
-    showAlert();
+
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.mobile) {} else
     if (connectivityResult == ConnectivityResult.wifi) {} else {
-
+      showAlert();
     }
   }
 
