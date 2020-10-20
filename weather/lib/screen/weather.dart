@@ -20,14 +20,10 @@ class _WeatherScreenState extends State<WeatherScreen> {
   var condition;
   var description;
 
-
-  @override
-  void initState() {
-    super.initState();
+  void information() {
     weatherData = widget.weatherData;
     if (weatherData != null) {
       setWeather();
-
       print(ctName);
       print(temp);
       print(condition);
@@ -35,10 +31,16 @@ class _WeatherScreenState extends State<WeatherScreen> {
     }
   }
 
+  @override
+  void initState() {
+    super.initState();
+    information();
+  }
+
   setWeather() {
     ctName = jsonDecode(weatherData)['name'];
     var x = jsonDecode(weatherData)['main']['temp'];
-    temp=x;
+    temp = x;
     condition = jsonDecode(weatherData)['weather'][0]['main'];
     description = jsonDecode(weatherData)['weather'][0]['description'];
   }
@@ -63,15 +65,19 @@ class _WeatherScreenState extends State<WeatherScreen> {
                   Container(
                     alignment: Alignment.topRight,
                     margin: EdgeInsets.all(20.0),
-                    child: Text(temp.toString(),
-                    style: textStyle,),
+                    child: Text(
+                      temp.toString(),
+                      style: textStyle,
+                    ),
                   ),
-                  Text(condition,
-                  style: textCondition,),
+                  Text(
+                    condition,
+                    style: textCondition,
+                  ),
                 ],
               ),
               Container(
-                height:60.0,
+                height: 60.0,
                 color: Colors.black38,
                 child: Padding(
                   padding: const EdgeInsets.all(10),
@@ -112,7 +118,11 @@ class IconButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onPress,
-      child: Icon(icon,color: Colors.white,size: 45,),
+      child: Icon(
+        icon,
+        color: Colors.white,
+        size: 45,
+      ),
     );
   }
 }
