@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'constants.dart';
+import 'dart:io';
 
 class MainPage extends StatefulWidget {
   @override
@@ -7,11 +9,23 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
+  String btitle = 'JPY';
 
-  String btitle='USA';
+  List<DropdownMenuItem> getDropDownItemAndroid() {
+    List<DropdownMenuItem<String>> itemlist = [];
+    for (String curency in curencyList) {
+      var newItem = DropdownMenuItem(
+        child: Text(curency),
+        value: curency,
+      );
+      itemlist.add(newItem);
+    }
+    return itemlist;
+  }
 
   @override
   Widget build(BuildContext context) {
+    //getDropDownItem();
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -53,24 +67,11 @@ class _MainPageState extends State<MainPage> {
                       value: btitle,
                       dropdownColor: Colors.black38,
                       iconEnabledColor: Colors.white,
-                      items: [
-                        DropdownMenuItem(
-                          child: Text('USA'),
-                          value: 'USA',
-                        ),
-                        DropdownMenuItem(
-                          child: Text('URO'),
-                          value: 'URO',
-                        ),
-                        DropdownMenuItem(
-                          child: Text('TK'),
-                          value: 'TK',
-                        ),
-                      ],
+                      items: getDropDownItemAndroid(),
                       onChanged: (value) {
                         print(value);
                         setState(() {
-                          btitle=value;
+                          btitle = value;
                         });
                       },
                     ),
