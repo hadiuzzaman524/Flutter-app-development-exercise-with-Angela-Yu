@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'constants.dart';
 import 'dart:io';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class MainPage extends StatefulWidget {
   @override
@@ -9,7 +11,70 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  String btitle = 'JPY';
+  String btitle = 'USD';
+  var onlineData;
+  var onlineDataE;
+  var base='BTC';
+  var target;
+  int rate=12808;
+  var baseE='ETH';
+  var targetE;
+  int rateE=396;
+  var bitCoin='BTC';
+
+  getDataFromInternet() async {
+   try {
+     String url =
+         'https://rest.coinapi.io/v1/exchangerate/BTC/$btitle?apikey=$apikey';
+     http.Response response = await http.get(url);
+     if (response.statusCode == 200) {
+       print('Ok');
+       onlineData = response.body;
+     } else {
+       print(response.statusCode);
+     }
+     print(onlineData);
+     getInfoBTC();
+   }catch(e){
+     print(e);
+   }
+  }
+
+  getDataFromInternetETH() async {
+    try {
+      String url =
+          'https://rest.coinapi.io/v1/exchangerate/ETH/$btitle?apikey=$apikey';
+      http.Response response = await http.get(url);
+      if (response.statusCode == 200) {
+        print('Ok');
+        onlineDataE = response.body;
+      } else {
+        print(response.statusCode);
+      }
+      print(onlineDataE);
+      getInfoETH();
+    }catch(e){
+      print(e);
+    }
+  }
+
+  getInfoBTC() {
+    base = jsonDecode(onlineData)['asset_id_base'];
+    target = jsonDecode(onlineData)['asset_id_quote'];
+    var r = jsonDecode(onlineData)['rate'];
+    rate=r.toInt();
+
+    print(base);
+    print(target);
+    print(rate);
+  }
+
+  getInfoETH() {
+    baseE = jsonDecode(onlineDataE)['asset_id_base'];
+    targetE = jsonDecode(onlineDataE)['asset_id_quote'];
+    var r = jsonDecode(onlineDataE)['rate'];
+    rateE=r.toInt();
+  }
 
   List<DropdownMenuItem> getDropDownItemAndroid() {
     List<DropdownMenuItem<String>> itemlist = [];
@@ -24,8 +89,18 @@ class _MainPageState extends State<MainPage> {
   }
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getDataFromInternet();
+    getDataFromInternetETH();
+  }
+
+
+  @override
   Widget build(BuildContext context) {
-    //getDropDownItem();
+    getDataFromInternet();
+    getDataFromInternetETH();
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -42,12 +117,12 @@ class _MainPageState extends State<MainPage> {
                 child: Column(
                   children: [
                     CartItem(
-                      title: btitle,
-                      value: '44',
+                      title: '1 $base -',
+                      value: '$rate $btitle',
                     ),
                     CartItem(
-                      title: btitle,
-                      value: '44',
+                      title: '1 $baseE - ',
+                      value: '$rateE $btitle',
                     ),
                   ],
                 ),

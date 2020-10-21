@@ -21,3 +21,5 @@ const List<String> curencyList = [
   'USD',
   'ZAR',
 ];
+
+const apikey='5EE6D47E-07FE-481D-A541-8A8BD96CF855';
