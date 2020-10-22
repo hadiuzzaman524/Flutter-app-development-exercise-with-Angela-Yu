@@ -1,4 +1,7 @@
+import 'package:easy_chat/registration.dart';
 import 'package:flutter/material.dart';
+import 'button.dart';
+import 'login.dart';
 
 class Home extends StatefulWidget {
   static const String id = 'home_page';
@@ -21,10 +24,13 @@ class _HomeState extends State<Home> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Container(
-                    height: 100,
-                    width: 100,
-                    child: Image.asset('images/messenger.png'),
+                  Hero(
+                    child: Container(
+                      height: 100,
+                      width: 100,
+                      child: Image.asset('images/messenger.png'),
+                    ),
+                    tag: 'icon',
                   ),
                   Text(
                     'Easy Chat',
@@ -37,69 +43,28 @@ class _HomeState extends State<Home> {
                   ButtonDesign(
                     title: 'Log In',
                     onClick: () {
-                      print('click login');
+                    Navigator.pushNamed(context, Login.id);
                     },
                   ),
                   ButtonDesign(
-                    title: 'Sign Up',
+                    title: 'Registration',
                     onClick: () {
-                      print('click signup');
+                      Navigator.pushNamed(context, Registration.id);
                     },
                   ),
                 ],
               ),
             ),
             Expanded(
-              child: Text('Powered By Hadi',
-              style: TextStyle(
-                fontSize: 18,
-                fontFamily: 'Pacifico',
-              ),),
+              child: Text(
+                'Powered By Hadi',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontFamily: 'Pacifico',
+                ),
+              ),
             ),
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class ButtonDesign extends StatelessWidget {
-  ButtonDesign({@required this.title, @required this.onClick});
-
-  final String title;
-  final Function onClick;
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onClick,
-      child: Card(
-        margin: EdgeInsets.all(10.0),
-        color: Colors.blue,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(15.0)),
-        ),
-        child: Container(
-          height: 50.0,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SizedBox(
-                width: 10,
-              ),
-              SizedBox(
-                width: 10,
-              ),
-              Text(
-                title,
-                style: TextStyle(
-                  fontSize: 22.0,
-                  color: Colors.white,
-                ),
-              )
-            ],
-          ),
         ),
       ),
     );

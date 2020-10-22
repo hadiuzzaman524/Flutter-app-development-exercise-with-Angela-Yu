@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       make every class has static keyword id thats why we
       directly used id using class name..
        */
-      initialRoute: Home.id,
+      initialRoute:Home.id,
       routes: {
         Home.id: (context) => Home(),
         Login.id: (context) => Login(),
