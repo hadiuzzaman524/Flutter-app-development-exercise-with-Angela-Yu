@@ -26,8 +26,8 @@ class _HomeState extends State<Home> {
                 children: [
                   Hero(
                     child: Container(
-                      height: 100,
-                      width: 100,
+                      height: 90,
+                      width: 90,
                       child: Image.asset('images/messenger.png'),
                     ),
                     tag: 'icon',
