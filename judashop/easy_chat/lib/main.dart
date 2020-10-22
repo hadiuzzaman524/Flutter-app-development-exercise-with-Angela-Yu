@@ -12,6 +12,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      /*
+      make every class has static keyword id thats why we
+      directly used id using class name..
+       */
       initialRoute: Home.id,
       routes: {
         Home.id: (context) => Home(),
