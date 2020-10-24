@@ -1,0 +1,4 @@
+#Fri Oct 23 20:27:44 BDT 2020
+base.0=G\:\\Education Area\\Flutter-app-development-exercise-with-angelina\\animation\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\out\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
