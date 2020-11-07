@@ -6,7 +6,8 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
+
 
 
   List<Widget> potriatItem() {
@@ -61,6 +62,21 @@ class _HomePageState extends State<HomePage> {
     ];
   }
 
+
+  @override
+  void initState() {
+    super.initState();
+
+    WidgetsBinding.instance.addObserver(this);
+
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+
+    print(state);
+  }
   @override
   Widget build(BuildContext context) {
 
