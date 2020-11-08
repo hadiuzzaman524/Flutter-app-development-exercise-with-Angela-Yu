@@ -8,8 +8,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
 
-
-
   List<Widget> potriatItem() {
     return [
       Container(
@@ -29,7 +27,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
               child: Container(
                 color: Colors.blue,
               ),
-            )
+            ),
           ],
         ),
       ),
@@ -77,6 +75,8 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
 
     print(state);
   }
+
+
   @override
   Widget build(BuildContext context) {
 
